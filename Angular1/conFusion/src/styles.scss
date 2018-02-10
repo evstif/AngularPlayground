@@ -6,4 +6,9 @@ body {
     font-family: Roboto, sans-serif;
 }
 
+.container {
+  margin: 20px;
+  display: flex;
+}
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css"
