@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Leaders } from '../shared/leaders'
+import { Leaders } from '../shared/leaders';
 
 @Injectable()
 export class LeaderService {
 
   constructor() { }
 
-  getAll(){
-    return Leaders.LEADERS
+  getAll() {
+    return Leaders.LEADERS;
   }
 
-  getFeaturedOne(){
+  getFeaturedOne() {
     return Leaders.LEADERS.filter((l) => l.featured)[0];
   }
 
