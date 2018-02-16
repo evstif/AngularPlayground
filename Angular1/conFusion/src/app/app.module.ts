@@ -25,6 +25,7 @@ import { PromotionService } from './services/promotion.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LeaderService } from './services/leader.service';
+import { ValidationService } from './services/validator-service.service';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { LeaderService } from './services/leader.service';
     // ,    DatePipe
   ],
   entryComponents: [LoginComponent],
-  providers: [DishService, PromotionService, LeaderService],
+  providers: [DishService, PromotionService, LeaderService, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
