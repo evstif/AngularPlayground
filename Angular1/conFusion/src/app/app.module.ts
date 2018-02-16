@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCheckboxModule, MatInputModule,
-          MatToolbarModule, MatListModule, MatGridListModule, MatCardModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatInputModule, MatToolbarModule, MatListModule,
+  MatGridListModule, MatCardModule, MatDialogModule, MatSlideToggleModule, MatSelectModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 // import { DatePipe } from '@angular/common';
 
@@ -45,9 +45,10 @@ import { LeaderService } from './services/leader.service';
     FormsModule,
     HttpClientModule,
     MatButtonModule, MatCheckboxModule, MatInputModule, MatToolbarModule, MatListModule, MatGridListModule,
-      MatCardModule, MatDialogModule,
+      MatCardModule, MatDialogModule, MatSlideToggleModule, MatSelectModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
     // ,    DatePipe
   ],
   entryComponents: [LoginComponent],
