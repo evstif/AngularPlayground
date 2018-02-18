@@ -6,6 +6,10 @@
     fxLayoutGap="10px"
     fxLayoutGap.xs="0">
 
+  <div fxFlex *ngIf="!dish" [hidden]="dish && dishId > 0">
+    <mat-spinner></mat-spinner><h4>Loading... please wait</h4>
+  </div>
+
   <div fxFlex="40" *ngIf="dish">
     <mat-card>
       <mat-card-header>

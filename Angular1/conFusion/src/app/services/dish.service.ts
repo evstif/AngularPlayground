@@ -9,17 +9,21 @@ export class DishService {
   constructor() { }
 
   getDishes(): Promise<Dish[]> {
-    return Promise.resolve(Dishes.DISHES);
+    return new Promise(resolve => {
+      setTimeout(() => { resolve(Dishes.DISHES); }, 2000);
+    });
   }
 
   getDish(id: number): Promise<Dish> {
-    return Promise.resolve(Dishes.DISHES.filter((dish) => (dish.id === id))[0]);
+    return new Promise(resolve => {
+      setTimeout(() => { resolve(Dishes.DISHES.filter((dish) => (dish.id === id))[0]); }, 2000);
+    });
   }
 
   getFeaturedDish(): Promise<Dish> {
     return new Promise(function (resolve, rejects) {
       try {
-        resolve(Dishes.DISHES.filter((dish) => dish.featured)[0]);
+        setTimeout(() => { resolve(Dishes.DISHES.filter((dish) => dish.featured)[0]); }, 2000);
       } catch {
         rejects('Error');
       }
