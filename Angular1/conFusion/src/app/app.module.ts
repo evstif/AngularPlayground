@@ -6,6 +6,7 @@ import { MatButtonModule, MatCheckboxModule, MatInputModule, MatToolbarModule, M
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StarRatingModule } from 'angular-star-rating';
 // import { DatePipe } from '@angular/common';
 
 import 'hammerjs';
@@ -49,7 +50,8 @@ import { ValidationService } from './services/validator-service.service';
       MatCardModule, MatDialogModule, MatSlideToggleModule, MatSelectModule, MatProgressSpinnerModule,
     FlexLayoutModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StarRatingModule.forRoot()
     // ,    DatePipe
   ],
   entryComponents: [LoginComponent],

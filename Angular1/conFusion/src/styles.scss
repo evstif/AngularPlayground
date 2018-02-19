@@ -43,4 +43,6 @@ $divider-color:        #BDBDBD;
   flex: 1 1 auto;
 }
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css"
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "assets/scss/star-rating.scss";

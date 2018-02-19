@@ -171,6 +171,6 @@ export class Dishes {
             }
         ]
     }
-];
+] as any;
 }
 
