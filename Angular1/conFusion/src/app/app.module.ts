@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatCheckboxModule, MatInputModule, MatToolbarModule, MatListModule, MatGridListModule, MatCardModule,
-  MatDialogModule, MatSlideToggleModule, MatSelectModule, MatSpinner, MatProgressSpinnerModule } from '@angular/material';
+  MatDialogModule, MatSlideToggleModule, MatSelectModule, MatSpinner, MatProgressSpinnerModule, MatSliderModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -47,7 +47,7 @@ import { ValidationService } from './services/validator-service.service';
     FormsModule,
     HttpClientModule,
     MatButtonModule, MatCheckboxModule, MatInputModule, MatToolbarModule, MatListModule, MatGridListModule,
-      MatCardModule, MatDialogModule, MatSlideToggleModule, MatSelectModule, MatProgressSpinnerModule,
+      MatCardModule, MatDialogModule, MatSlideToggleModule, MatSelectModule, MatProgressSpinnerModule, MatSliderModule,
     FlexLayoutModule,
     AppRoutingModule,
     ReactiveFormsModule,

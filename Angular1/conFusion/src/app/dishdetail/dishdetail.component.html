@@ -42,6 +42,7 @@
         <div matLine>-- {{ comment.author }} {{ comment.date | date:'mediumDate' }}</div>
       </mat-list-item>
 
+      <hr *ngIf="commentForm.valid" />
       <mat-list-item *ngIf="commentForm.valid">
         <div matLine>{{ commentForm.value.comment }}</div>
         <div matLine>{{ commentForm.value.rating }} Stars</div>

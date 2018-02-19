@@ -15,7 +15,7 @@ export class Comment {
   }
 
   public syncDate() { 
-    this.date = new Date().toDateString();
+    this.date = new Date().toISOString();
   }
 }
 
