@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { Dishes } from '../shared/dishes';
 import { Comment } from '../shared/comment';
@@ -26,7 +26,9 @@ export class DishdetailComponent implements OnInit {
     private dishdetail: DishService,
     private route: ActivatedRoute,
     private location: Location,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    @Inject('BaseURL')
+    public baseURL: string) {
       this.createForm();
   }
 
@@ -37,7 +39,7 @@ export class DishdetailComponent implements OnInit {
   dishIds: number[];
 
   commentForm: FormGroup;
-  
+
   @Input()
   @Output()
   public comment: Comment;
@@ -72,7 +74,7 @@ export class DishdetailComponent implements OnInit {
 
   ngOnInit() {
     this.comment = Comment.empty();
-    this.dishdetail.getDishesIds().subscribe(dishIds => this.dishIds = dishIds);
+    this.dishdetail.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     this.route.params
       .switchMap((params: Params) => this.dishdetail.getDish(+params['id']))
       .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
@@ -94,11 +96,11 @@ export class DishdetailComponent implements OnInit {
 
   onValueChanged(data?: any) {
     if (!this.commentForm) {
-      return; 
+      return;
     }
-    
+
     const form = this.commentForm;
-    
+
     for (const field in this.formErrors) {
         if (this.formErrors.hasOwnProperty(field)) {
         // clear previous error message (if any)
@@ -117,12 +119,12 @@ export class DishdetailComponent implements OnInit {
   }
 
   onSubmit() {
-    this.comment = Object.assign(new Comment(), this.commentForm.value)
+    this.comment = Object.assign(new Comment(), this.commentForm.value);
     this.comment.syncDate();
 
     console.log(this.comment);
 
-    this.dish.comments.push(this.comment)
+    this.dish.comments.push(this.comment);
     this.commentForm.reset(Comment.empty());
-  }  
+  }
 }

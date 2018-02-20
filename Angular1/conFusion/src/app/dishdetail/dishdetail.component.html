@@ -17,7 +17,7 @@
           <h3>{{ dish.name | uppercase }}</h3>
         </mat-card-title>
       </mat-card-header>
-      <img mat-card-image src="{{ dish.image }}" alt="{{ dish.name }}"/>
+      <img mat-card-image src="{{ baseURL + dish.image }}" alt="{{ dish.name }}"/>
       <mat-card-content>
         <p>{{ dish.description }}</p>
       </mat-card-content>
@@ -53,7 +53,7 @@
     <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
         <p>
           <mat-input-container class="full-width"
-           dividerColor="{{(formErrors.firstname) ? 'warn' : 'primary'}}">
+           dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
             <input matInput formControlName="author" placeholder="Name" type="text" required>
             <mat-hint>
               <span [hidden]="!(formErrors.author)">

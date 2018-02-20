@@ -7,7 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StarRatingModule } from 'angular-star-rating';
-// import { DatePipe } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import 'hammerjs';
 
@@ -27,7 +27,8 @@ import { PromotionService } from './services/promotion.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LeaderService } from './services/leader.service';
 import { ValidationService } from './services/validator-service.service';
-
+import { Configuration } from './shared/config';
+import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 
 @NgModule({
   declarations: [
@@ -51,11 +52,14 @@ import { ValidationService } from './services/validator-service.service';
     FlexLayoutModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    HttpModule
     // ,    DatePipe
   ],
   entryComponents: [LoginComponent],
-  providers: [DishService, PromotionService, LeaderService, ValidationService],
+  providers:
+    [DishService, PromotionService, LeaderService, ValidationService, ProcessHttpmsgService,
+      { provide: 'BaseURL', useValue: Configuration.BASEURL }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
