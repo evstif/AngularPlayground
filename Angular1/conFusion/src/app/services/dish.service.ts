@@ -22,21 +22,24 @@ export class DishService {
 
     getDishes(): Observable<Dish[]> {
       return this.http.get(this.baseURL + 'dishes')
-        .map(res => this.processHTTPMsgService.extractData(res)).catch(err => Observable.throw(err));
+        .map(res => this.processHTTPMsgService.extractData(res))
+        .catch(error => this.processHTTPMsgService.handleError(error));
     }
 
     getDish(id: number): Observable<Dish> {
       return  this.http.get(this.baseURL + 'dishes/' + id)
-        .map(res => this.processHTTPMsgService.extractData(res)).catch(err => Observable.throw(err));
+        .map(res => this.processHTTPMsgService.extractData(res))
+        .catch(error => this.processHTTPMsgService.handleError(error));
     }
 
     getFeaturedDish(): Observable<Dish> {
       return this.http.get(this.baseURL + 'dishes?featured=true')
-        .map(res => this.processHTTPMsgService.extractData(res)[0]).catch(err => Observable.throw(err));
+        .map(res => this.processHTTPMsgService.extractData(res)[0])
+        .catch(error => this.processHTTPMsgService.handleError(error));
     }
 
     getDishIds(): Observable<number[]> {
       return this.getDishes()
-        .map(dishes => dishes.map(dish => dish.id)).catch(err => Observable.throw(err));
+        .map(dishes => dishes.map(dish => dish.id));
     }
 }

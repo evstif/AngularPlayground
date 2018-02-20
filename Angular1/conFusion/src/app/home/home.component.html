@@ -1,7 +1,7 @@
 <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="space-around center"
   fxLayoutGap="10px">
 
-  <mat-card *ngIf="dish" fxFlex>
+  <mat-card *ngIf="dish && !errorMessage" fxFlex>
     <mat-card-header>
       <div md-card-avatar></div>
       <mat-card-title>
@@ -13,9 +13,13 @@
       <p>{{dish.description}}
       </p>
     </mat-card-content>
+    <div *ngIf="errorMessage">
+      <h2>Error</h2>
+      <h4>{{errorMessage}}</h4>
+    </div>
   </mat-card>
 
-  <mat-card *ngIf="promotion" fxFlex>
+  <mat-card *ngIf="promotion && !errorMessage" fxFlex>
     <mat-card-header>
       <div md-card-avatar></div>
       <mat-card-title>
@@ -27,20 +31,28 @@
       <p>{{promotion.description}}
       </p>
     </mat-card-content>
+    <div *ngIf="errorMessage">
+      <h2>Error</h2>
+      <h4>{{errorMessage}}</h4>
+    </div>
   </mat-card>
 
-  <mat-card *ngIf="leader" fxFlex>
-      <mat-card-header>
-        <div md-card-avatar></div>
-        <mat-card-title>
-          <h3>{{leader.name | uppercase}}</h3>
-        </mat-card-title>
-      </mat-card-header>
-      <img md-card-image src={{baseURL + leader.image}} alt={{leader.name}}>
-      <mat-card-content>
-        <p>{{leader.description}}
-        </p>
-      </mat-card-content>
-    </mat-card>
+  <mat-card *ngIf="leader && !errorMessage" fxFlex>
+    <mat-card-header>
+      <div md-card-avatar></div>
+      <mat-card-title>
+        <h3>{{leader.name | uppercase}}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <img md-card-image src={{baseURL + leader.image}} alt={{leader.name}}>
+    <mat-card-content>
+      <p>{{leader.description}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <div *ngIf="errorMessage">
+    <h2>Error</h2>
+    <h4>{{errorMessage}}</h4>
+  </div>
 
   </div>

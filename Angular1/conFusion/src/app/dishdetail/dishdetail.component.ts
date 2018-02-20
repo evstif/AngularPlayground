@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
-import { Dishes } from '../shared/dishes';
 import { Comment } from '../shared/comment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StarRatingModule } from 'angular-star-rating';
@@ -61,6 +60,7 @@ export class DishdetailComponent implements OnInit {
 
   prev: number;
   next: number;
+  errorMessage: string;
 
   goBack(): void {
     this.location.back();
@@ -74,7 +74,7 @@ export class DishdetailComponent implements OnInit {
 
   ngOnInit() {
     this.comment = Comment.empty();
-    this.dishdetail.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
+    this.dishdetail.getDishIds().subscribe(dishIds => this.dishIds = dishIds, err => this.errorMessage = <any>err);
     this.route.params
       .switchMap((params: Params) => this.dishdetail.getDish(+params['id']))
       .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });

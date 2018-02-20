@@ -16,10 +16,12 @@ export class MenuComponent implements OnInit {
 
   dishes: Dish[];
 
+  errorMessage: string;
+
   onSelect(dish: Dish) {
   }
 
   ngOnInit() {
-    this.dishService.getDishes().subscribe(dishes => this.dishes = dishes);
+    this.dishService.getDishes().subscribe(dishes => this.dishes = dishes, err => this.errorMessage = <any>err);
   }
 }
