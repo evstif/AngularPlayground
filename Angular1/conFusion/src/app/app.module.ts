@@ -30,6 +30,7 @@ import { ValidationService } from './services/validator-service.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { Configuration } from './shared/config';
+import { HighlightDirective } from './directives/highlight.directive';
 
 export function RestangularConfigFactory (RestangularProvider) {
   RestangularProvider.setBaseUrl(Configuration.BASEURL);
@@ -45,7 +46,8 @@ export function RestangularConfigFactory (RestangularProvider) {
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
