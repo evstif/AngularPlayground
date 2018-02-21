@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
     public baseURL: string) { }
 
   ngOnInit() {
-    this.dishservice.getFeaturedDish().subscribe(dish => this.dish = this.dish, err => this.errorMessage = <any>err);
-    this.promotionservice.getFeaturedPromotion().subscribe(p => this.promotion = p, err => this.errorMessage = <any>err);
+    this.dishservice.getFeaturedOne().subscribe(dish => this.dish = this.dish, err => this.errorMessage = <any>err);
+    this.promotionservice.getFeaturedOne().subscribe(p => this.promotion = p, err => this.errorMessage = <any>err);
     this.leaderservice.getFeaturedOne().subscribe(l => this.leader = l, err => this.errorMessage = <any>err);
   }
 }

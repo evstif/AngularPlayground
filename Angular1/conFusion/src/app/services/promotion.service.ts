@@ -5,21 +5,23 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
+import { Restangular } from 'ngx-restangular';
 
 @Injectable()
 export class PromotionService {
 
-  constructor() { }
+  constructor(private restangular: Restangular) { }
 
   getPromotions(): Observable<Promotion[]> {
-    return Observable.of(Promotions.PROMOTIONS);
+    return this.restangular.all('promotions').getList();
   }
 
-  getPromotion(id: number): Observable<Promotion> {
-    return Observable.of(Promotions.PROMOTIONS.filter((promo) => (promo.id === id))[0]);
+  getDish(id: number): Observable<Promotion> {
+    return  this.restangular.one('promotions', id).get();
   }
 
-  getFeaturedPromotion(): Observable<Promotion> {
-    return Observable.of(Promotions.PROMOTIONS.filter((promotion) => promotion.featured)[0]);
-  }
+  getFeaturedOne(): Observable<Promotion> {
+    return this.restangular.all('promotions').getList({featured: true})
+      .map(ps => ps[0]);
+  }  
 }

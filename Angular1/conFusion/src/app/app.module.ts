@@ -5,9 +5,10 @@ import { MatButtonModule, MatCheckboxModule, MatInputModule, MatToolbarModule, M
   MatDialogModule, MatSlideToggleModule, MatSelectModule, MatSpinner, MatProgressSpinnerModule, MatSliderModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { StarRatingModule } from 'angular-star-rating';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RestangularModule, Restangular } from 'ngx-restangular';
 
 import 'hammerjs';
 
@@ -23,12 +24,16 @@ import { LoginComponent } from './login/login.component';
 
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
-
-import { AppRoutingModule } from './app-routing/app-routing.module';
+import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 import { LeaderService } from './services/leader.service';
 import { ValidationService } from './services/validator-service.service';
+
+import { AppRoutingModule } from './app-routing/app-routing.module';
 import { Configuration } from './shared/config';
-import { ProcessHttpmsgService } from './services/process-httpmsg.service';
+
+export function RestangularConfigFactory (RestangularProvider) {
+  RestangularProvider.setBaseUrl(Configuration.BASEURL);
+}
 
 @NgModule({
   declarations: [
@@ -46,6 +51,7 @@ import { ProcessHttpmsgService } from './services/process-httpmsg.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpModule,
     HttpClientModule,
     MatButtonModule, MatCheckboxModule, MatInputModule, MatToolbarModule, MatListModule, MatGridListModule,
       MatCardModule, MatDialogModule, MatSlideToggleModule, MatSelectModule, MatProgressSpinnerModule, MatSliderModule,
@@ -53,7 +59,7 @@ import { ProcessHttpmsgService } from './services/process-httpmsg.service';
     AppRoutingModule,
     ReactiveFormsModule,
     StarRatingModule.forRoot(),
-    HttpModule
+    RestangularModule.forRoot(RestangularConfigFactory)
     // ,    DatePipe
   ],
   entryComponents: [LoginComponent],
