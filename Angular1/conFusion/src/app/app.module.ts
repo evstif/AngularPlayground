@@ -31,6 +31,7 @@ import { ValidationService } from './services/validator-service.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { Configuration } from './shared/config';
 import { HighlightDirective } from './directives/highlight.directive';
+import { RouterModule } from '@angular/router';
 
 export function RestangularConfigFactory (RestangularProvider) {
   RestangularProvider.setBaseUrl(Configuration.BASEURL);
@@ -58,6 +59,7 @@ export function RestangularConfigFactory (RestangularProvider) {
     MatButtonModule, MatCheckboxModule, MatInputModule, MatToolbarModule, MatListModule, MatGridListModule,
       MatCardModule, MatDialogModule, MatSlideToggleModule, MatSelectModule, MatProgressSpinnerModule, MatSliderModule,
     FlexLayoutModule,
+    RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
     StarRatingModule.forRoot(),

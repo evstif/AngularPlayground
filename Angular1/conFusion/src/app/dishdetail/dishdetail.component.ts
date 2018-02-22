@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, Output, Inject } from '@angular/core';
-import { Dish } from '../shared/dish';
-import { Comment } from '../shared/comment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StarRatingModule } from 'angular-star-rating';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { DishService } from '../services/dish.service';
 import { Observable } from 'rxjs/Observable';
+
+import { DishService } from '../services/dish.service';
+import { Comment } from '../shared/comment';
+import { Dish } from '../shared/dish';
+import { flyInOut, visibility } from '../animations/app.animation';
 
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
@@ -18,19 +18,11 @@ import 'rxjs/add/operator/switchMap';
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss'],
-  animations: [
-    trigger('visibility', [
-        state('shown', style({
-            transform: 'scale(1.0)',
-            opacity: 1
-        })),
-        state('hidden', style({
-            transform: 'scale(0.5)',
-            opacity: 0
-        })),
-        transition('* => *', animate('0.5s ease-in-out'))
-    ])
-  ]
+  animations: [visibility(), flyInOut()],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+    }
 })
 
 export class DishdetailComponent implements OnInit {
