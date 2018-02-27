@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
     expand()
   ]
 })
+
 export class MenuComponent implements OnInit {
 
   constructor(

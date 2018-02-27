@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback';
 import { ValidationService } from '../services/validator-service.service';
 import { expand, flyInOut } from '../animations/app.animation';
+import { FeedbackService } from '../services/feedback.service';
+
+export const StateType = ['Normal', 'Sending', 'Sent'];
 
 @Component({
   selector: 'app-contact',
@@ -23,6 +26,8 @@ export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;
   feedback: Feedback;
   contactType = ContactType;
+
+  state: string;
 
   formErrors = {
     'firstname': '',
@@ -52,8 +57,9 @@ export class ContactComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private feedbackService: FeedbackService) {
     this.createForm();
+    this.state = 'Normal';
   }
 
   ngOnInit() {
@@ -97,8 +103,27 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
+    this.state = 'Sending';
+
+    const feedback = this.feedbackForm.value;
+
+    this.feedbackService.submitFeedback(feedback).subscribe(
+      f => {
+        this.feedback = f;
+        this.state = 'Sent';
+        setTimeout(() => {
+          this.state = 'Normal';
+        }, 5000);
+        console.log(feedback);
+        this.resetForm();
+      },
+      err => {
+        console.log('An error occured: ' + <any>err);
+        this.resetForm();
+      });
+  }
+
+  resetForm() {
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
@@ -109,6 +134,4 @@ export class ContactComponent implements OnInit {
       message: ''
     });
   }
-
-
 }

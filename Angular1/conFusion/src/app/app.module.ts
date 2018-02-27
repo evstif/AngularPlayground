@@ -32,6 +32,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { Configuration } from './shared/config';
 import { HighlightDirective } from './directives/highlight.directive';
 import { RouterModule } from '@angular/router';
+import { FeedbackService } from './services/feedback.service';
+import { FeedbackSummaryComponent } from './feedback-summary/feedback-summary.component';
 
 export function RestangularConfigFactory (RestangularProvider) {
   RestangularProvider.setBaseUrl(Configuration.BASEURL);
@@ -48,7 +50,8 @@ export function RestangularConfigFactory (RestangularProvider) {
     AboutComponent,
     ContactComponent,
     LoginComponent,
-    HighlightDirective
+    HighlightDirective,
+    FeedbackSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,7 @@ export function RestangularConfigFactory (RestangularProvider) {
   ],
   entryComponents: [LoginComponent],
   providers:
-    [DishService, PromotionService, LeaderService, ValidationService, ProcessHttpmsgService,
+    [DishService, PromotionService, LeaderService, ValidationService, ProcessHttpmsgService, FeedbackService,
       { provide: 'BaseURL', useValue: Configuration.BASEURL }],
   bootstrap: [AppComponent]
 })

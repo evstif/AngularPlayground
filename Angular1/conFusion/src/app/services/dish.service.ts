@@ -20,16 +20,16 @@ export class DishService {
     getDishes(): Observable<Dish[]> {
       return this.restangular.all('dishes').getList();
     }
-  
+
     getDish(id: number): Observable<Dish> {
       return  this.restangular.one('dishes', id).get();
     }
-  
+
     getFeaturedOne(): Observable<Dish> {
       return this.restangular.all('dishes').getList({featured: true})
         .map(dishes => dishes[0]);
     }
-  
+
     getDishIds(): Observable<number[]> {
       return this.restangular.all('dishes').getList()
         .map(dishes => dishes.map(dish => dish.id));

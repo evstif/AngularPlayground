@@ -41,7 +41,7 @@ fxLayoutGap="10px">
   <h3>Send us your Feedback</h3>
   <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
 
-  <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+  <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" *ngIf="state == 'Normal'" [@expand]>
     <p>
       <mat-input-container class="half-width"
        dividerColor="{{(formErrors.firstname) ? 'warn' : 'primary'}}">
@@ -97,4 +97,8 @@ fxLayoutGap="10px">
     </p>
     <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
   </form>
+
+  <mat-spinner *ngIf="state == 'Sending'" [@expand]></mat-spinner>
+
+  <app-feedback-summary [feedback]="feedback" *ngIf="state == 'Sent'" [@expand]></app-feedback-summary>
 </div>

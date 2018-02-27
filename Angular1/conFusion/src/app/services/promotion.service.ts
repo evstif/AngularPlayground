@@ -23,5 +23,5 @@ export class PromotionService {
   getFeaturedOne(): Observable<Promotion> {
     return this.restangular.all('promotions').getList({featured: true})
       .map(ps => ps[0]);
-  }  
+  }
 }
